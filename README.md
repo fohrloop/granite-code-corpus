@@ -391,9 +391,76 @@ Most common ngrams using the `ngram_show` tool from [granite-tools](https://gith
 
 # Comparison to other corpora
 
+## granite-code vs kla-code
+
+The [Keyboard Layout Analysis: Creating the Corpus, Bigram Chains, and Shakespeare's Monkeys](https://zenodo.org/records/5501838)[^douglas-kla]  (here: `kla-code`) contains ngram dataset for programming use called `code-frequency.txt`. The dataset only contains unigrams. One of the main differences is that the kla-code is not for optimizing for any specific programming language. The source corpus is taken from [acmeism/RosettaCodeData](https://github.com/acmeism/RosettaCodeData). See for example [Solve_a_Numbrix_puzzle](https://rosettacode.org/wiki/Solve_a_Numbrix_puzzle#Python) for some code samples.
+
+<details>
+<summary>kla-code vs Granite Code: unigrams</summary>
+
+- The kla-code clearly has not removed indentation as the amount of space chracters is so high (~25%).
+- The Granite Code does not have any tabs (likely that tabs have been replaced by spaces in the repos used). Typically IDEs jump to the correct indendation level, so tabs are needed less than number of tabs in a file.
+- Parenthesis (`(` and `)`) are used less in the corpus used by the Granite Code ngrams.
+- Equals sign (`=`) is used less in the corpus used by the Granite Code ngrams.
+
+
+
+```
+─────────────────────kla-code───────────────────── ───────────────────────code───────────────────────
+ 1: ␣  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 24.87                 1 ( +0): ␣  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 7.85
+ 2: e  ▇▇▇▇▇ 5.08                                    2 ( +0): e  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 7.53
+ 3: t  ▇▇▇▇ 4.11                                     3 ( +0): t  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 5.62
+ 4: ⏎  ▇▇▇ 3.61                                      4 ( +3): r  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 4.48
+ 5: n  ▇▇▇ 3.55                                      5 ( +3): a  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 4.43
+ 6: i  ▇▇▇ 3.40                                      6 ( +3): o  ▇▇▇▇▇▇▇▇▇▇▇▇▇ 4.18
+ 7: r  ▇▇▇ 3.34                                      7 ( +3): s  ▇▇▇▇▇▇▇▇▇▇▇▇▇ 4.12
+ 8: a  ▇▇▇ 3.00                                      8 ( -3): n  ▇▇▇▇▇▇▇▇▇▇▇▇ 3.96
+ 9: o  ▇▇▇ 2.80                                      9 ( -3): i  ▇▇▇▇▇▇▇▇▇▇▇ 3.73
+10: s  ▇▇▇ 2.77                                     10 ( -6): ⏎  ▇▇▇▇▇▇▇▇▇▇ 3.30
+11: l  ▇▇ 2.09                                      11 ( +0): l  ▇▇▇▇▇▇▇▇▇ 3.09
+12: )  ▇▇ 1.90                                      12 ( +3): c  ▇▇▇▇▇▇▇ 2.27
+13: (  ▇▇ 1.90                                      13 ( +1): d  ▇▇▇▇▇▇▇ 2.18
+14: d  ▇▇ 1.73                                      14 ( +4): p  ▇▇▇▇▇▇▇ 2.14
+15: c  ▇ 1.58                                       15 ( +8): .  ▇▇▇▇▇▇ 2.09
+16: ,  ▇ 1.49                                       16 ( +1): u  ▇▇▇▇▇▇ 1.94
+17: u  ▇ 1.46                                       17 ( +8): -  ▇▇▇▇▇▇ 1.92
+18: p  ▇ 1.33                                       18 ( -2): ,  ▇▇▇▇▇▇ 1.82
+19: m  ▇ 1.30                                       19 ( +0): m  ▇▇▇▇▇▇ 1.81
+20: f  ▇ 1.18                                       20 ( +0): f  ▇▇▇▇▇ 1.58
+21: =  ▇ 1.12                                       21 ( -9): )  ▇▇▇▇ 1.46
+22: "  ▇ 1.09                                       22 ( -9): (  ▇▇▇▇ 1.46
+23: .  ▇ 1.05                                       23 ( -1): "  ▇▇▇▇ 1.44
+24: h  ▇ 1.02                                       24 ( +7): :  ▇▇▇▇ 1.25
+25: -  ▇ 1.01                                       25 ( -1): h  ▇▇▇▇ 1.24
+26: 1  ▇ 1.01                                       26 (+13): _  ▇▇▇▇ 1.20
+27: 0  ▇ 0.98                                       27 ( +1): g  ▇▇▇ 1.11
+28: g  ▇ 0.90                                       28 ( -1): 0  ▇▇▇ 1.07
+29: ;  ▇ 0.78                                       29 ( -3): 1  ▇▇▇ 1.06
+30: b  ▇ 0.74                                       30 ( +0): b  ▇▇▇ 1.00
+31: :  ▇ 0.70                                       31 (-10): =  ▇▇▇ 1.00
+32: y  ▇ 0.61                                       32 ( +0): y  ▇▇▇ 0.86
+33: x  ▇ 0.58                                       33 ( +1): 2  ▇▇ 0.79
+34: 2  ▇ 0.57                                       34 ( -1): x  ▇▇ 0.73
+35: \t  0.53                                        35 (+10): '  ▇▇ 0.70
+36: w   0.52                                        36 ( +4): v  ▇▇ 0.67
+37: [   0.48                                        37 (+12): {  ▇▇ 0.57
+38: ]   0.47                                        38 (+13): }  ▇▇ 0.57
+39: _   0.47                                        39 ( +8): /  ▇▇ 0.56
+40: v   0.47                                        40 (-11): ;  ▇▇ 0.53
+45: '   0.41                                        43 ( -7): w  ▇ 0.48
+47: /   0.37                                        51 (-14): [  ▇ 0.32
+49: {   0.37                                        52 (-14): ]  ▇ 0.32
+51: }   0.37                                       ??? (???): \t  0.00
+```
+
+</details>
+
 ## granite-code vs colemak-iweb
 
-Download link: [iweb-corpus-samples-cleaned.txt.xz](https://colemak.com/pub/corpus/iweb-corpus-samples-cleaned.txt.xz). This is the same as the `ngrams/shai_english` in the Keyboard Layout Optimizer[^shai], named after Shai Coleman, the creator of Colemak layout. It is unclear if the corpus has been superceded by larger corpora later, as the current version of [Colemak Design](https://colemak.com/Design) page refers to [English Letter Frequency Counts: Mayzner Revisited or ETAOIN SRHLDCU](https://norvig.com/mayzner.html)
+Download link: [iweb-corpus-samples-cleaned.txt.xz](https://colemak.com/pub/corpus/iweb-corpus-samples-cleaned.txt.xz). This is the same as the `ngrams/shai_english` in the Keyboard Layout Optimizer[^shai], named after Shai Coleman, the creator of Colemak layout.[^colemak] 
+
+Note that the `iweb` dataset contains ngrams for *English*, not *programming*.
+
 
 <details>
 <summary>iweb vs Granite Code: unigrams</summary>
@@ -1124,4 +1191,6 @@ if __name__ == "__main__":
 </details>
 
 
+[^douglas-kla]: Douglas, Ian. “Keyboard Layout Analysis: Creating the Corpus, Bigram Chains, and Shakespeare's Monkeys”. Zenodo, March 29, 2021. [doi.org/10.5281/zenodo.5501838](https://doi.org/10.5281/zenodo.5501838).
 [^shai]: See: [dariogoetz/keyboard_layout_optimizer/discussions/78](https://github.com/dariogoetz/keyboard_layout_optimizer/discussions/78#discussioncomment-10866520)
+[^colemak]: It is unclear if the corpus has been superceded by larger corpora later, as the current version of [Colemak Design](https://colemak.com/Design) page refers to [English Letter Frequency Counts: Mayzner Revisited or ETAOIN SRHLDCU](https://norvig.com/mayzner.html)
