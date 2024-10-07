@@ -391,7 +391,7 @@ Most common ngrams using the `ngram_show` tool from [granite-tools](https://gith
 
 # Comparison to other corpora
 
-## granite-english vs colemak-iweb
+## granite-code vs colemak-iweb
 
 Download link: [iweb-corpus-samples-cleaned.txt.xz](https://colemak.com/pub/corpus/iweb-corpus-samples-cleaned.txt.xz). This is the same as the `ngrams/shai_english` in the Keyboard Layout Optimizer[^shai], named after Shai Coleman, the creator of Colemak layout. It is unclear if the corpus has been superceded by larger corpora later, as the current version of [Colemak Design](https://colemak.com/Design) page refers to [English Letter Frequency Counts: Mayzner Revisited or ETAOIN SRHLDCU](https://norvig.com/mayzner.html)
 
