@@ -861,6 +861,15 @@ Note that the `iweb` dataset contains ngrams for *English*, not *programming*.
 ```
 </details>
 
+# Want a version of this corpus with slight modifications?
+
+If you want to get this corpus with slight modifications, including some of the following:
+- Converting upper case characters to lower case
+- Ignoring whitespace (removing ngrams with whitespace)
+- Ignoring ngrams with one or more special symbols or other characters
+
+You may use the `ngram_show` from the [granite-tools](https://github.com/fohrloop/granite-tools/) (v.0.2.0+).
+
 # How the ngrams were created
 
 The code ngrams are based on source code from multiple popular open source repositories. The following repositories where cloned 2024-09-30. The latest `commit-hash` and the dominant language(s) is shown in parenthesis:
